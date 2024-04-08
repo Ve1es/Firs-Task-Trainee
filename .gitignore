@@ -2,8 +2,8 @@
 /*
 
 # Except for these
-!/.gitignore
-!/Assets
-!/Packages
-!/ProjectSettings
+!FirstTaskTrainee/.gitignore
+!FirstTaskTrainee/Assets
+!FirstTaskTrainee/Packages
+!FirstTaskTrainee/ProjectSettings
 !/.png
