@@ -13,7 +13,7 @@ public class CharacterMove : MonoBehaviour
     public float jumpHeight = 2f;
     public float jumpDuration = 0.5f;
 
-    private void OnEnable()
+    /*private void OnEnable()
     {
         ControlEventSystem.RightSignal += MoveRight;
         ControlEventSystem.LeftSignal += MoveLeft;
@@ -23,10 +23,14 @@ public class CharacterMove : MonoBehaviour
 
     private void OnDisable()
     {
-    }
+        ControlEventSystem.RightSignal -= MoveRight;
+        ControlEventSystem.LeftSignal -= MoveLeft;
+        ControlEventSystem.UpSignal -= Jump;
+        ControlEventSystem.DownSignal -= RollUp;
+    }*/
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow) && !isMoving)
+       /* if (Input.GetKeyDown(KeyCode.RightArrow) && !isMoving)
         {
             StartCoroutine(MoveCharacter(1));
         }
@@ -37,7 +41,7 @@ public class CharacterMove : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow) && !isMoving)
         {
             Jump();
-        }
+        }*/
 
     }
 
@@ -86,19 +90,19 @@ public class CharacterMove : MonoBehaviour
 
         yield return new WaitForSeconds(0.1f);
     }
-    void MoveRight()
+    public void MoveRight()
     {
         StartCoroutine(MoveCharacter(1));
     }
-    void MoveLeft()
+    public void MoveLeft()
     {
         StartCoroutine(MoveCharacter(-1));
     }
-    void Jump()
+    public void Jump()
     {
         StartCoroutine(PerformJump());
     }
-    void RollUp()
+    public void RollUp()
     {
 
     }

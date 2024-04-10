@@ -6,7 +6,11 @@ using UnityEngine;
 public class MobileControlStrategy : IControlStrategy
 {
     private const float swipeThreshold = 50f;
-    ControlEventSystem _controlEventSystem;
+
+    public event Action UpSignal;
+    public event Action DownSignal;
+    public event Action RightSignal;
+    public event Action LeftSignal;
     public void HandleInput()
     {
         if (Input.touchCount > 0)
@@ -23,22 +27,22 @@ public class MobileControlStrategy : IControlStrategy
                     {
                         if (swipeDelta.x > 0)
                         {
-                            _controlEventSystem.UpEvent();
+                            RightSignal?.Invoke();
                         }
                         else
                         {
-                            _controlEventSystem.LeftEvent();
+                            LeftSignal?.Invoke();
                         }
                     }
                     else
                     {
                         if (swipeDelta.y > 0)
                         {
-                            _controlEventSystem.UpEvent();
+                            UpSignal?.Invoke();
                         }
                         else
                         {
-                            _controlEventSystem.DownEvent();
+                            DownSignal?.Invoke();
                         }
                     }
                 }
