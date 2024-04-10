@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 public class MobileControlStrategy : IControlStrategy
 {
     private const float swipeThreshold = 50f;
+    ControlEventSystem _controlEventSystem;
     public void HandleInput()
     {
         if (Input.touchCount > 0)
@@ -21,22 +23,22 @@ public class MobileControlStrategy : IControlStrategy
                     {
                         if (swipeDelta.x > 0)
                         {
-                            // Обработка свайпа вправо
+                            _controlEventSystem.UpEvent();
                         }
                         else
                         {
-                            // Обработка свайпа влево
+                            _controlEventSystem.LeftEvent();
                         }
                     }
                     else
                     {
                         if (swipeDelta.y > 0)
                         {
-                            // Обработка свайпа вверх
+                            _controlEventSystem.UpEvent();
                         }
                         else
                         {
-                            // Обработка свайпа вниз
+                            _controlEventSystem.DownEvent();
                         }
                     }
                 }
