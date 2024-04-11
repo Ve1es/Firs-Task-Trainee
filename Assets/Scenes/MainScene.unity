@@ -182,10 +182,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6db0d648f0cd744ba84cd5f337ce7c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabToSpawn: {fileID: 622338341}
-  spawnInterval: 1
-  numberOfObjectsToSpawn: 50
-  timer: 0
 --- !u!114 &223786315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -929,6 +925,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5852915922767013941, guid: e19994782fbf97940896842391bafe1d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1719860573}
+    - targetCorrespondingSourceObject: {fileID: 5852915922767013941, guid: e19994782fbf97940896842391bafe1d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1719860574}
   m_SourcePrefab: {fileID: 100100000, guid: e19994782fbf97940896842391bafe1d, type: 3}
 --- !u!1001 &426492850
 PrefabInstance:
@@ -1404,6 +1403,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1285877629 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 616307763947696634, guid: e19994782fbf97940896842391bafe1d, type: 3}
+  m_PrefabInstance: {fileID: 378224677}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1719860565 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5852915922767013941, guid: e19994782fbf97940896842391bafe1d, type: 3}
@@ -1416,7 +1420,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1719860565}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a9cc6f5be78e28448d46a340ff6435b, type: 3}
   m_Name: 
@@ -1450,6 +1454,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6791e80c6d3a6404dbeb98de95567f30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1719860574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719860565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb64b4db41a8cd24bbced87fe0e94399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 1285877629}
+  moveDistance: 2
+  moveSpeed: 10
+  jumpHeight: 2
+  jumpDuration: 0.5
+  speed: 5
+  rb: {fileID: 1719860578}
+--- !u!54 &1719860578 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 5820675376566702628, guid: e19994782fbf97940896842391bafe1d, type: 3}
+  m_PrefabInstance: {fileID: 378224677}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1977452360
 GameObject:
   m_ObjectHideFlags: 0

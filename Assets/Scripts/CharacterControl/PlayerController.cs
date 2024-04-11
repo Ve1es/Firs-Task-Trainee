@@ -7,22 +7,18 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private IControlStrategy _controlStrategy;
-    private CharacterMove _characterMove;
-    //public event Action UpSignal;
-    //public event Action DownSignal;
-    //public event Action RightSignal;
-    //public event Action LeftSignal;
+    private Player _characterMove;
     public void SetControlStrategy(IControlStrategy strategy)
     {
         _controlStrategy = strategy;
         _controlStrategy.UpSignal += _characterMove.Jump;
-        _controlStrategy.DownSignal += _characterMove.RollUp;
+        _controlStrategy.DownSignal += _characterMove.Slide;
         _controlStrategy.RightSignal += _characterMove.MoveRight;
         _controlStrategy.LeftSignal += _characterMove.MoveLeft;
     }
-    void Start()
+    void Awake()
     {
-        _characterMove = GetComponent<CharacterMove>();
+        _characterMove = GetComponent<Player>();
     }
     public void Update()
     {

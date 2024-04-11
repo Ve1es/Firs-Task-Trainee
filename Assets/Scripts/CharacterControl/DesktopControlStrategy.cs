@@ -11,22 +11,22 @@ public class DesktopControlStrategy : IControlStrategy
     public event Action LeftSignal;
     public void HandleInput()
     {
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKeyUp(KeyCode.UpArrow))
         {
             UpSignal?.Invoke();
         }
 
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKeyUp(KeyCode.DownArrow))
         {
             DownSignal?.Invoke();
         }
 
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKeyUp(KeyCode.RightArrow))
         {
             RightSignal?.Invoke();
         }
 
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKeyUp(KeyCode.LeftArrow))
         {
             LeftSignal?.Invoke();
         }
