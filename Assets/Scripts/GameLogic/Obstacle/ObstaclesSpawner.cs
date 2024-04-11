@@ -32,7 +32,7 @@ public class ObstaclesSpawner : MonoBehaviour
     IEnumerator StartScriptAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        SpawnControll();
+       // SpawnControll();
         spawnObject = true;
     }
 
@@ -57,7 +57,14 @@ public class ObstaclesSpawner : MonoBehaviour
         _spawnpPoint.position = new Vector3(x, objectToSpawn.transform.position.y, spawnObjectHelper.position.z);
         if (randomValue < spawnProbability)
         {
-            Instantiate(objectToSpawn, _spawnpPoint.position, objectToSpawn.transform.rotation);
+            //Instantiate(objectToSpawn, _spawnpPoint.position, objectToSpawn.transform.rotation);
+            GameObject obstacle = ObjectPoolObstacles.instance.GetPooledObject();
+
+            if(obstacle != null)
+            {
+                obstacle.transform.position = _spawnpPoint.position;
+                obstacle.SetActive(true);
+            }
         }
     }
 }

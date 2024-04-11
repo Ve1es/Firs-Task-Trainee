@@ -20,6 +20,7 @@ public class Mover : MonoBehaviour
         Vector3 newPosition = currentPosition + Vector3.forward * zMovement;
 
         transform.position = newPosition;
+        speed += 0.001f;
     }
     
     public void MoveRight()
@@ -31,7 +32,6 @@ public class Mover : MonoBehaviour
     }
     public void MoveLeft()
     {
-        Debug.Log(transform.position.x + moveDistance * moveLeft);
         if (Math.Abs((transform.position.x + moveDistance*moveLeft)) <= maxX)
         {
             StartCoroutine(MoveCharacter(moveLeft));
