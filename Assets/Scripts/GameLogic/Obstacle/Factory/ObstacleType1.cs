@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class ObstacleType3 : Obstacle
+public class ObstacleType1 : Obstacle
 {
     public EndLocationEvent tileEndSignal;
-    void OnEnable()
+   /* void OnEnable()
     {
         GameObject[] emitters = GameObject.FindGameObjectsWithTag("TileEnd");
         //поиск ближайшего объекта обозначающего конец локации у которого z больше чем у созданного obstacle
@@ -17,7 +17,7 @@ public class ObstacleType3 : Obstacle
             tileEndSignal = closestObject.GetComponent<EndLocationEvent>();
             tileEndSignal.tileEndSignal += Destroy;
         }
-    }
+    }*/
     private void Start()
     {
         //tileEndSignal.tileEndSignal += Destroy;
@@ -29,9 +29,6 @@ public class ObstacleType3 : Obstacle
     }
     public override void Destroy()
     {
-        if (playerObject.transform.position.z > gameObject.transform.position.z)
-        {
             gameObject.SetActive(false);
-        }
     }
 }

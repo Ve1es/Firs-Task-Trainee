@@ -115,6 +115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2076517023058296716}
   - component: {fileID: 5567384455220107431}
+  - component: {fileID: 1814829197705338051}
   m_Layer: 0
   m_Name: AllVariant
   m_TagString: Obstacle
@@ -153,6 +154,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileEndSignal: {fileID: 0}
+--- !u!65 &1814829197705338051
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3167034174678891045}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.0646505, y: 0.14656633, z: 0.37581444}
+  m_Center: {x: 0.034882277, y: 1.405663, z: 0.11546135}
 --- !u!1 &3182714158529069539
 GameObject:
   m_ObjectHideFlags: 0

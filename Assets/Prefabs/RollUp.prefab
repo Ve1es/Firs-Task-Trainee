@@ -655,6 +655,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3427929900653279104}
   - component: {fileID: 6750747389526143930}
+  - component: {fileID: 2913370039659569296}
   m_Layer: 0
   m_Name: RollUp
   m_TagString: Obstacle
@@ -671,7 +672,7 @@ Transform:
   m_GameObject: {fileID: 5636517773653976439}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.87, y: 0.6, z: -23.39}
+  m_LocalPosition: {x: -5.87, y: 1.973, z: -23.39}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -693,6 +694,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileEndSignal: {fileID: 0}
+--- !u!65 &2913370039659569296
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5636517773653976439}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.8010297, y: 0.5864617, z: 0.27723312}
+  m_Center: {x: 0.07828295, y: 1.828797, z: 0.01852274}
 --- !u!1 &6689995696861462492
 GameObject:
   m_ObjectHideFlags: 0
