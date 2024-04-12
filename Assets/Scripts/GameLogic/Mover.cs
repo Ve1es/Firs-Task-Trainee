@@ -5,42 +5,58 @@ using UnityEngine;
 
 public class Mover : MonoBehaviour
 {
-    public float speed = 5f;
-    public float moveDistance = 2f;
-    public float moveSpeed = 10f;
-    public float maxX = 2;
-    private int moveRigt = 1;
-    private int moveLeft = -1;
+    public StartGame startGame;
+    [SerializeField]
+    private float speed = 5f;
+    [SerializeField]
+    private float moveDistance = 2f;
+    [SerializeField]
+    private float moveSpeed = 10f;
+    [SerializeField]
+    private float maxX = 2;
+    private int _moveRigt = 1;
+    private int _moveLeft = -1;
+    private bool _isRun = false;
+
+
+    private void Start()
+    {
+        startGame.startGameEvent += Run;
+    }
 
     void Update()
     {
-        Vector3 currentPosition = transform.position;
+        if (_isRun)
+        {
+            Vector3 currentPosition = transform.position;
 
-        float zMovement = speed * Time.deltaTime;
-        Vector3 newPosition = currentPosition + Vector3.forward * zMovement;
+            float zMovement = speed * Time.deltaTime;
+            Vector3 newPosition = currentPosition + Vector3.forward * zMovement;
 
-        transform.position = newPosition;
-        speed += 0.001f;
+            transform.position = newPosition;
+            speed += 0.001f;
+        }
     }
-    
+    public void Run()
+    {
+        _isRun = true;
+    }
     public void MoveRight()
     {    
-        if (Math.Abs((transform.position.x + moveDistance* moveRigt)) <= maxX)
+        if (Math.Abs((transform.position.x + moveDistance* _moveRigt)) <= maxX)
         {
-            StartCoroutine(MoveCharacter(moveRigt));
+            StartCoroutine(MoveCharacter(_moveRigt));
         }
     }
     public void MoveLeft()
     {
-        if (Math.Abs((transform.position.x + moveDistance*moveLeft)) <= maxX)
+        if (Math.Abs((transform.position.x + moveDistance*_moveLeft)) <= maxX)
         {
-            StartCoroutine(MoveCharacter(moveLeft));
+            StartCoroutine(MoveCharacter(_moveLeft));
         }
     }
     IEnumerator MoveCharacter(float movementDirection)
-    {
-        //isMoving = true;
-        
+    {      
             float startX = transform.position.x;
             float targetX = startX + moveDistance * movementDirection;
 
@@ -59,6 +75,5 @@ public class Mover : MonoBehaviour
             }
 
             transform.position = new Vector3(targetX, transform.position.y, transform.position.z);
-        //isMoving = false;
     }
 }

@@ -5,9 +5,10 @@ using UnityEngine;
 public class ObstaclesSpawner : MonoBehaviour
 {
     public float timeBeforeStart = 4;
-
     public GameObject objectToSpawn;
     public Transform spawnObjectHelper;
+    public StartGame startGame;
+
     [SerializeField]
     private int _obstacleStep = 6;
     [SerializeField]
@@ -18,11 +19,15 @@ public class ObstaclesSpawner : MonoBehaviour
     private Vector3 _lastPosition;
     private bool spawnObject=false;
 
-    private void Start()
+    public void Start()
     {
-        StartSpawn();//!!!!! запуск по нажатию кнопки, это для теста
+        startGame.startGameEvent += StartGame;
+    }
+    private void StartGame()
+    {
         _spawnpPoint = spawnObjectHelper;
         _lastPosition = spawnObjectHelper.position;
+        StartSpawn();//!!!!! запуск по нажатию кнопки, это для теста
     }
 
     public void StartSpawn()

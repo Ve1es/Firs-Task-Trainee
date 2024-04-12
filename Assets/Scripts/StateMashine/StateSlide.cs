@@ -12,8 +12,8 @@ public class StateSlide : State
     }
     public override void Enter()
     {
-        base.Enter();
-        Debug.LogError("Я вошел в состояние подката");
+        //base.Enter();
+        //Debug.LogError("Я вошел в состояние подката");
         if (!isSliding)
         {
             isSliding = true;
@@ -24,8 +24,8 @@ public class StateSlide : State
     }
     public override void Exit()
     {
-        base.Exit();
-        Debug.LogError("Я вышел из состояния подката");
+        //base.Exit();
+        //Debug.LogError("Я вышел из состояния подката");
         _player.anim.SetBool("isSlide", false);
         isSliding = false;
         _player.colliderRun.enabled = true;

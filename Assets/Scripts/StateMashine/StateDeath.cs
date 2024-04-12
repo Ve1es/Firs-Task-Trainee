@@ -11,8 +11,10 @@ public class StateDeath : State
     }
     public override void Enter()
     {
-        //base.Enter();
         Debug.LogError("Я вошел в состояние смерти");
+        Time.timeScale = 0f;
+        _player.endGameCanvas.SetActive(true);
+        _player.inGameCanvas.SetActive(false);
     }
     public override void Exit()
     {

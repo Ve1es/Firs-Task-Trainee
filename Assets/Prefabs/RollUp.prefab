@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3637648431368988920}
   m_Layer: 0
   m_Name: Stump_01_LOD1
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 6694533715993454695}
   m_Layer: 0
   m_Name: Branch_01 (3)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 5996406511682987404}
   m_Layer: 0
   m_Name: Stump_01_LOD0
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -306,7 +306,7 @@ GameObject:
   - component: {fileID: 8962869577936853948}
   m_Layer: 0
   m_Name: Branch
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -364,7 +364,7 @@ GameObject:
   - component: {fileID: 1568848465326775189}
   m_Layer: 0
   m_Name: Stump_01_LOD1
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -448,7 +448,7 @@ GameObject:
   - component: {fileID: 8397433573309503201}
   m_Layer: 0
   m_Name: Stump_01_LOD0
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -553,7 +553,7 @@ GameObject:
   - component: {fileID: 24057040016482324}
   m_Layer: 0
   m_Name: Branch_01 (1)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -692,6 +692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b95c85ef767c7c6409bb2147ccd61cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileEndSignal: {fileID: 0}
 --- !u!1 &6689995696861462492
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,7 +705,7 @@ GameObject:
   - component: {fileID: 8544487214205283908}
   m_Layer: 0
   m_Name: Stump_01
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -763,7 +764,7 @@ GameObject:
   - component: {fileID: 2807917420988344832}
   m_Layer: 0
   m_Name: Branch_01
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -869,7 +870,7 @@ GameObject:
   - component: {fileID: 4182608085686531199}
   m_Layer: 0
   m_Name: Branch_01 (2)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -973,7 +974,7 @@ GameObject:
   - component: {fileID: 5848543680560618793}
   m_Layer: 0
   m_Name: Stump_01 (1)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

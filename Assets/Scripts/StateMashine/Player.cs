@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     private StateIdle _stateIdle;
     private StateJump _stateJump;
     private StateSlide _stateSlide;
+    private StateDeath _stateDeath;
     //Game Logic//
     public Animator anim;
     public float jumpHeight = 2f;
@@ -17,11 +18,14 @@ public class Player : MonoBehaviour
     public float jumpDuration = 0.5f;
     public float speed = 5f;
     public Rigidbody rb;
-    public JumpEndEvent _jumpEndEvent;
-    public SlideEndEvent _slideEndEvent;
+    public JumpEndEvent jumpEndEvent;
+    public SlideEndEvent slideEndEvent;
+    public CollisionHandler collisionHandler;
     public Mover mover;
     public Collider colliderRun; 
     public Collider colliderSlide;
+    public GameObject endGameCanvas;
+    public GameObject inGameCanvas;
 
     private void Start()
     {
@@ -30,11 +34,13 @@ public class Player : MonoBehaviour
         _stateIdle = new StateIdle(this);
         _stateJump = new StateJump(this);
         _stateSlide = new StateSlide(this);
+        _stateDeath = new StateDeath(this);
         _sm.Initialize(new StateIdle(this));
-        _jumpEndEvent.EndJumpSignal += Run;
-        _slideEndEvent.EndSlideSignal += Run;
-        Run();
+        collisionHandler.obstacleCollisionEvent += Death;
+        jumpEndEvent.EndJumpSignal += Run;
+        slideEndEvent.EndSlideSignal += Run;
     }
+    
 
     private void Update()
     {
@@ -60,5 +66,9 @@ public class Player : MonoBehaviour
     public void Run()
     {
         _sm.ChangeState(_stateRun);
+    }
+    public void Death()
+    {
+        _sm.ChangeState(_stateDeath);
     }
 }

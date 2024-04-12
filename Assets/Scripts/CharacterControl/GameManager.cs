@@ -5,8 +5,13 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public PlayerController playerController;
+    public StartGame startGame;
 
-    void Start()
+    private void Start()
+    {
+        startGame.startGameEvent += GetControl;
+    }
+    void GetControl()
     {
         if (Application.isMobilePlatform)
         {
