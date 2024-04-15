@@ -6,6 +6,7 @@ using UnityEngine;
 public class StateDeath : State
 {
     private Player _player;
+    
     public event Action stopMove;
     public event Action keepMove;
     public StateDeath(Player player)
@@ -14,11 +15,11 @@ public class StateDeath : State
     }
     public override void Enter()
     {
-        Debug.LogError("Я вошел в состояние смерти");
         _player.anim.SetBool("isDeath", true);
         stopMove?.Invoke();
         _player.endGameCanvas.SetActive(true);
         _player.inGameCanvas.SetActive(false);
+        _player.addScore.WriteScore();
     }
     public override void Exit()
     {

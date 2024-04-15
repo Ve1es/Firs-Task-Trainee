@@ -6,10 +6,18 @@ public class ContinueGameAfterAD : MonoBehaviour
 {
     public GameObject player;
     public Player playerLogic;
+    public CloseCanvas canvas;
+    public RewardAD rewardAD;
+
+    public void Start()
+    {
+        rewardAD.endAD += Respawn;
+    }
     public void Respawn()
     {
         ClearObstaclesAroundPlayer();
         StartCoroutine(WaitCleaning());
+        canvas.Close();
     }
 
     private void ClearObstaclesAroundPlayer()

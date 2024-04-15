@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     public Collider colliderSlide;
     public GameObject endGameCanvas;
     public GameObject inGameCanvas;
+    public AddScoreToDB addScore;
 
     private void Awake()
     {

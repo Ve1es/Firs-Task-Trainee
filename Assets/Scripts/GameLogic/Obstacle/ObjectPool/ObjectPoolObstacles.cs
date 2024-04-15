@@ -50,14 +50,14 @@ public class ObjectPoolObstacles : MonoBehaviour
             int randomIndex = Random.Range(0, availableObjects.Count);
             return availableObjects[randomIndex];
         }
-        /*for (int i=0; i<pooledObjects.Count; i++)
+        else
         {
-            if (!pooledObjects[i].activeInHierarchy)
-            {
-                return pooledObjects[i];
-            }
-        }*/
-        return null;
+            GameObject obj = Instantiate(obstacls[Random.Range(0, obstacls.Count-1)]);
+            obj.SetActive(false);
+            pooledObjects.Add(obj);
+            return obj;
+        }
+        //return null;
     }
     
     void Update()

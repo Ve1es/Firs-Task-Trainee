@@ -1,17 +1,22 @@
 using GoogleMobileAds;
 using GoogleMobileAds.Api;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class RewardAD : MonoBehaviour
 {
+    public Player player;
+    public CloseCanvas closeCanvas;
+    public event Action endAD;
     public void Start()
     {
         MobileAds.Initialize((InitializationStatus initStatus) =>
         {
             // This callback is called once the MobileAds SDK is initialized.
         });
+        LoadRewardedAd();
     }
 #if UNITY_ANDROID
     private string _adUnitId = "ca-app-pub-3940256099942544/5224354917";
@@ -55,4 +60,20 @@ public class RewardAD : MonoBehaviour
 
             });
     }
+
+
+    public void ShowRewardedAd()
+    {
+       /* const string rewardMsg =
+            "Rewarded ad rewarded the user. Type: {0}, amount: {1}.";*/
+
+        if (_rewardedAd != null && _rewardedAd.CanShowAd())
+        {
+            _rewardedAd.Show((Reward reward) =>
+            {
+                endAD?.Invoke();
+            });
+        }
+    }
+
 }
