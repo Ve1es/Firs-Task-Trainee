@@ -9,9 +9,7 @@ public class ContinueGameAfterAD : MonoBehaviour
     public void Respawn()
     {
         ClearObstaclesAroundPlayer();
-        ChangeState();
-        ChangeUI();
-        Unpause();
+        StartCoroutine(WaitCleaning());
     }
 
     private void ClearObstaclesAroundPlayer()
@@ -29,6 +27,14 @@ public class ContinueGameAfterAD : MonoBehaviour
 
         // Выключаем объект
         obstacleCleaner.SetActive(false);
+    }
+    private IEnumerator WaitCleaning()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        ChangeState();
+        ChangeUI();
+        Unpause();
     }
     private void ChangeState()
     {

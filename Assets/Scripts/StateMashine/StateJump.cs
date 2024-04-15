@@ -12,8 +12,6 @@ public class StateJump : State
     }
     public override void Enter()
     {
-        //base.Enter();
-        //Debug.LogError("Я вошел в состояние прыжка");
         if (!isJumping)
         {
             isJumping = true;
@@ -23,8 +21,6 @@ public class StateJump : State
     }
     public override void Exit()
     {
-        //base.Exit();
-        //Debug.LogError("Я вышел из состояния прыжка");
         _player.anim.SetBool("isJumping", false);
         isJumping = false;
     }

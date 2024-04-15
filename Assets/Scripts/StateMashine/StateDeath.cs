@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine;
 public class StateDeath : State
 {
     private Player _player;
+    public event Action stopMove;
+    public event Action keepMove;
     public StateDeath(Player player)
     {
         _player = player;
@@ -12,13 +15,16 @@ public class StateDeath : State
     public override void Enter()
     {
         Debug.LogError("Я вошел в состояние смерти");
-        Time.timeScale = 0f;
+        _player.anim.SetBool("isDeath", true);
+        stopMove?.Invoke();
         _player.endGameCanvas.SetActive(true);
         _player.inGameCanvas.SetActive(false);
     }
     public override void Exit()
     {
-        //base.Exit();
-        //Debug.LogError("Я вышел из состояния покоя");
+        _player.anim.SetBool("isDeath", false);
+        keepMove?.Invoke();
+        _player.endGameCanvas.SetActive(false);
+        _player.inGameCanvas.SetActive(true);
     }
 }

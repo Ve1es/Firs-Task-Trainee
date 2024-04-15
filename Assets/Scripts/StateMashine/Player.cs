@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     private StateIdle _stateIdle;
     private StateJump _stateJump;
     private StateSlide _stateSlide;
-    private StateDeath _stateDeath;
+    public StateDeath _stateDeath;
     //Game Logic//
     public Animator anim;
     public float jumpHeight = 2f;
@@ -27,25 +27,27 @@ public class Player : MonoBehaviour
     public GameObject endGameCanvas;
     public GameObject inGameCanvas;
 
-    private void Start()
+    private void Awake()
     {
         _sm = new StateMachine();
         _stateRun = new StateRun(this);
         _stateIdle = new StateIdle(this);
         _stateJump = new StateJump(this);
         _stateSlide = new StateSlide(this);
-        _stateDeath = new StateDeath(this);
+        _stateDeath = new StateDeath(this); 
+    }
+    private void Start()
+    {
         _sm.Initialize(new StateIdle(this));
         collisionHandler.obstacleCollisionEvent += Death;
         jumpEndEvent.EndJumpSignal += Run;
         slideEndEvent.EndSlideSignal += Run;
     }
-    
+
 
     private void Update()
     {
         _sm.CurrentState.Update();
-
     }
     public void MoveRight()
     {
