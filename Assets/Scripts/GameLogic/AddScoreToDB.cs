@@ -11,7 +11,9 @@ public class AddScoreToDB : MonoBehaviour
     DatabaseReference databaseReference;
     public Score score;
     private int _finalScore;
-    int _nowScoreValue = 0;
+
+    private const string _dataNameScore = "score";
+    private const string _dataNameUsers = "users";
 
     void Start()
     {
@@ -35,7 +37,7 @@ public class AddScoreToDB : MonoBehaviour
             string path = "users/" + userId;
             var userData = new Dictionary<string, object>
         {
-            { "score", _finalScore.ToString()}
+            { _dataNameScore, _finalScore.ToString()}
         };
             if (_finalScore > oldScore)
                 databaseReference.Child(path).UpdateChildrenAsync(userData).ContinueWithOnMainThread(task =>
@@ -56,32 +58,13 @@ public class AddScoreToDB : MonoBehaviour
         }
 
     }
-    string GetScore(string userId)
-    {
-        string scoreValue = "0";
-        // ѕолучение значени€ пол€ score из базы данных дл€ пользовател€ с заданным ID
-        databaseReference.Child("users").Child(userId).Child("score").GetValueAsync().ContinueWithOnMainThread(task =>
-        {
-            if (task.IsFaulted)
-            {
-                Debug.LogError("ќшибка при получении данных score пользовател€: " + task.Exception);
-            }
-            else if (task.IsCompleted)
-            {
-                DataSnapshot snapshot = task.Result;
-                // ѕолучение значени€ пол€ score
-                scoreValue = snapshot.GetValue(true).ToString();
-            }
-        });
-        return scoreValue;
-    }
 
     private async Task<string> GetScoreAsync(string userId)
     {
         string scoreValue = "0";
 
         // ѕолучение значени€ пол€ score из базы данных дл€ пользовател€ с заданным ID
-        await databaseReference.Child("users").Child(userId).Child("score").GetValueAsync().ContinueWithOnMainThread(task =>
+        await databaseReference.Child(_dataNameUsers).Child(userId).Child(_dataNameScore).GetValueAsync().ContinueWithOnMainThread(task =>
         {
             if (task.IsFaulted)
             {

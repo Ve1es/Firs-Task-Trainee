@@ -6,12 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class Logout : MonoBehaviour
 {
+    private const string _playerPrefsPasswordFieldName = "Password";
+    private const string _playerPrefsEmailFieldName = "Email";
     public void Exit()
     {
         FirebaseAuth.DefaultInstance.SignOut();
         GoMenuMethod();
-        PlayerPrefs.DeleteKey("Email");
-        PlayerPrefs.DeleteKey("Password");
+        PlayerPrefs.DeleteKey(_playerPrefsEmailFieldName);
+        PlayerPrefs.DeleteKey(_playerPrefsPasswordFieldName);
         Debug.Log("Logged out from Firebase");
     }
     public void GoMenuMethod()

@@ -8,6 +8,8 @@ public class WriteScoreInDB : MonoBehaviour
 {
     public Score score;
     private int _finalScore;
+    private const string _dataNameScore = "score";
+    private const string _dataNameUsers = "users";
     void OnEnable()
     {
         _finalScore = score.GetScore();
@@ -25,11 +27,11 @@ public class WriteScoreInDB : MonoBehaviour
             userId = auth.CurrentUser.UserId;
             var userData = new Dictionary<string, string>
         {
-            { "score", _finalScore.ToString()}
+            { _dataNameScore, _finalScore.ToString()}
         };
 
             // «аписываем данные пользовател€ в базу данных
-            databaseReference.Child("users").Child(userId).SetValueAsync(userData);
+            databaseReference.Child(_dataNameUsers).Child(userId).SetValueAsync(userData);
         }
         else
         {

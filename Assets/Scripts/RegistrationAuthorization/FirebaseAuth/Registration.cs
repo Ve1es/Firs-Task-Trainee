@@ -18,6 +18,13 @@ public class Registration : MonoBehaviour
     [SerializeField] private TMP_InputField _emailAuthorization;
     [SerializeField] private TMP_InputField _passwordAuthorization;
 
+    private const string _dataNameName = "name";
+    private const string _dataNameScore = "score";
+    private const string _dataNameUsers = "users";
+
+    private const string _playerPrefsPasswordFieldName = "Password";
+    private const string _playerPrefsEmailFieldName = "Email";
+
     public GoToGame goToGame;
 
     
@@ -37,8 +44,8 @@ public class Registration : MonoBehaviour
     {
         var auth = FirebaseAuth.DefaultInstance;
 
-        string savedUserPassword = PlayerPrefs.GetString("Password");
-        string savedUserEmail = PlayerPrefs.GetString("Email");
+        string savedUserPassword = PlayerPrefs.GetString(_playerPrefsPasswordFieldName);
+        string savedUserEmail = PlayerPrefs.GetString(_playerPrefsEmailFieldName);
         if (savedUserPassword != "" && savedUserEmail != "")
         {
             auth.SignInWithEmailAndPasswordAsync(savedUserEmail, savedUserPassword).ContinueWithOnMainThread(task =>
@@ -116,8 +123,8 @@ public class Registration : MonoBehaviour
 
     private void SaveUserData(string email, string password)
     {
-        PlayerPrefs.SetString("Email", email);
-        PlayerPrefs.SetString("Password", password);
+        PlayerPrefs.SetString(_playerPrefsEmailFieldName, email);
+        PlayerPrefs.SetString(_playerPrefsPasswordFieldName, password);
         PlayerPrefs.Save();
     }
     public void AddNameAndScore()
@@ -133,12 +140,12 @@ public class Registration : MonoBehaviour
             userId = auth.CurrentUser.UserId;
             var userData = new Dictionary<string, string>
         {
-            { "userName", userName},
-            { "score", score.ToString()}
+            { _dataNameName, userName},
+            { _dataNameScore, score.ToString()}
         };
 
             // «аписываем данные пользовател€ в базу данных
-            databaseReference.Child("users").Child(userId).SetValueAsync(userData);
+            databaseReference.Child(_dataNameUsers).Child(userId).SetValueAsync(userData);
             _endAddData?.Invoke();
         }
         else

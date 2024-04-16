@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class CloseCanvas : MonoBehaviour
 {
+    public GameObject gO;
     public void Close()
     {
-        gameObject.SetActive(false);
+        gO.SetActive(false);
     }
 }

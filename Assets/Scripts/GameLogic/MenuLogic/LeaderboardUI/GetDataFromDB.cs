@@ -14,15 +14,24 @@ public class GetDataFromDB : MonoBehaviour
     DatabaseReference databaseReference;
     public PlayerScoresDisplay playerScoresDisplay;
 
+    private const string _dataNameName = "name";
+    private const string _dataNameScore = "score";
+    private const string _dataNameUsers = "users";
+
     void Start()
+    {
+        
+    }
+
+    private void OnEnable()
     {
         databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
         playerScoresDisplay = GetComponent<PlayerScoresDisplay>();
+        FetchPlayerData();
     }
-
     public void FetchPlayerData()
     {   
-        databaseReference.Child("users").OrderByChild("score").GetValueAsync().ContinueWithOnMainThread(task =>
+        databaseReference.Child(_dataNameUsers).OrderByChild(_dataNameScore).GetValueAsync().ContinueWithOnMainThread(task =>
         {
             if (task.IsFaulted)
             {
@@ -49,15 +58,15 @@ public class GetDataFromDB : MonoBehaviour
 
         foreach (DataSnapshot playerSnapshot in snapshot.Children)
         {
-            string playerName = playerSnapshot.Child("name").Value.ToString();
-            string playerScore = playerSnapshot.Child("score").Value.ToString();
+            string playerName = playerSnapshot.Child(_dataNameName).Value.ToString();
+            string playerScore = playerSnapshot.Child(_dataNameScore).Value.ToString();
 
             string[] playerData = { playerName, playerScore };
             playerDataList.Add(playerData);
         }
 
         // —ортировка данных по убыванию счета
-        //playerDataList = playerDataList.OrderByDescending(playerData => int.Parse(playerData[1])).ToList();
+        playerDataList = playerDataList.OrderByDescending(playerData => int.Parse(playerData[1])).ToList();
 
         // ѕреобразование списка в двумерный массив
         string[,] playerDataArray = new string[playerDataList.Count, 2];

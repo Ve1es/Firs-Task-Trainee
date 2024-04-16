@@ -5,28 +5,24 @@ using UnityEngine;
 
 public class PlayerScoresDisplay : MonoBehaviour
 {
-    public GameObject playerContainerPrefab;
-    public Transform contentParent;
+    public GameObject rowPrefab;
+    public Transform rowsParent;
+
+    private const int _firstRow = 0;
+    private const int _secondRow=1;
+
+
+  
 
     public void DisplayPlayerScores(string[,] playerScores)
     {
-        foreach (Transform child in contentParent)
-        {
-            Destroy(child.gameObject);
-        }
-
         for (int i = 0; i < playerScores.GetLength(0); i++)
         {
-            string playerName = playerScores[i, 0];
-            string playerScore = playerScores[i, 1];
+            GameObject newRow = Instantiate(rowPrefab, rowsParent);
+            TextMeshProUGUI[] textFields = newRow.GetComponentsInChildren<TextMeshProUGUI>();
+            textFields[0].text = playerScores[i, _firstRow];
+            textFields[1].text = playerScores[i, _secondRow];
 
-            GameObject playerContainer = Instantiate(playerContainerPrefab, contentParent);
-
-            TMP_Text nameText = playerContainer.transform.Find("Name").GetComponent<TMP_Text>();
-            TMP_Text scoreText = playerContainer.transform.Find("Score").GetComponent<TMP_Text>();
-
-            nameText.text = playerName;
-            scoreText.text = playerScore;
         }
     }
 }
