@@ -24,7 +24,7 @@ public class Mover : MonoBehaviour
     private void Start()
     {
         startGame.startGameEvent += Run;
-        player._stateDeath.stopMove += RunStop;
+        player._stateDeath.stopMove += Stop;
         player._stateDeath.keepMove += Run;
     }
 
@@ -41,7 +41,7 @@ public class Mover : MonoBehaviour
             speed += 0.001f;
         }
     }
-    public void RunStop()
+    /*public void RunStop()
     {
         if (_isRun)
         {
@@ -51,6 +51,10 @@ public class Mover : MonoBehaviour
         {
             _isRun = true;
         }
+    }*/
+    public void Stop()
+    {
+        _isRun = false;
     }
     public void Run()
     {

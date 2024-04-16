@@ -16,6 +16,7 @@ public class PlayerScoresDisplay : MonoBehaviour
 
     public void DisplayPlayerScores(string[,] playerScores)
     {
+        Clear();
         for (int i = 0; i < playerScores.GetLength(0); i++)
         {
             GameObject newRow = Instantiate(rowPrefab, rowsParent);
@@ -24,5 +25,14 @@ public class PlayerScoresDisplay : MonoBehaviour
             textFields[1].text = playerScores[i, _secondRow];
 
         }
+    }
+
+    private void Clear()
+    {
+        foreach (Transform child in rowsParent)
+        {
+            Destroy(child.gameObject);
+        }
+
     }
 }

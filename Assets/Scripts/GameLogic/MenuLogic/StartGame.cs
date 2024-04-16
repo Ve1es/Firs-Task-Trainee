@@ -19,10 +19,15 @@ public class StartGame : MonoBehaviour
         startGameEvent?.Invoke();
     }
     private void StartRun()
-    {
-        _player.stopAction = true;
+    { 
         _player.Run();
+        StartCoroutine(WaitAndDoSomething());
 
+    }
+    IEnumerator WaitAndDoSomething()
+    {
+        yield return new WaitForSeconds(0.1f);
+        _player.DoAction();
     }
     private void ChangeUI()
     {

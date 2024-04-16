@@ -6,13 +6,14 @@ using UnityEngine.Events;
 
 public class PauseManager : MonoBehaviour
 {
-    public static bool GameIsPaused = false;
+    private bool _gameIsPaused = false;
     public GameObject pauseMenuUI;
     public UnityEvent pauseGameEvent;
+    public UnityEvent unpauseGameEvent;
 
     public void PauseOnOf()
     {
-        if (GameIsPaused)
+        if (_gameIsPaused)
         {
             Resume();
         }
@@ -25,9 +26,9 @@ public class PauseManager : MonoBehaviour
     void Resume()
     {
         pauseMenuUI.SetActive(false);
-        pauseGameEvent?.Invoke();
+        unpauseGameEvent?.Invoke();
         Time.timeScale = 1f;
-        GameIsPaused = false;
+        _gameIsPaused = false;
     }
 
     void Pause()
@@ -35,6 +36,6 @@ public class PauseManager : MonoBehaviour
         pauseMenuUI.SetActive(true);
         pauseGameEvent?.Invoke();
         Time.timeScale = 0f;
-        GameIsPaused = true;
+        _gameIsPaused = true;
     }
 }

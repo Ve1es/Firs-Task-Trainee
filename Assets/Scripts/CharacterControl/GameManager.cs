@@ -44,10 +44,10 @@ public class GameManager : MonoBehaviour
 
         // Дополнительная проверка на Unity Remote
         
-        if(EditorApplication.isRemoteConnected)
+        /*if(EditorApplication.isRemoteConnected)
         {
             isMobileWithRemote = true;
-        }
+        }*/
 
         return isMobileWithRemote;
     }
