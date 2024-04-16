@@ -30,11 +30,11 @@ public class GameManager : MonoBehaviour
         bool isMobileWithRemote = false;
 
 #if UNITY_EDITOR
-       /* if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.Android ||
-            EditorUserBuildSettings.activeBuildTarget == BuildTarget.iOS)
-        {
-            isMobileWithRemote = true;
-        }*/
+        /* if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.Android ||
+             EditorUserBuildSettings.activeBuildTarget == BuildTarget.iOS)
+         {
+             isMobileWithRemote = true;
+         }*/
 #else
     if (Application.isMobilePlatform)
     {
@@ -43,11 +43,15 @@ public class GameManager : MonoBehaviour
 #endif
 
         // Дополнительная проверка на Unity Remote
-        
+
         /*if(EditorApplication.isRemoteConnected)
         {
             isMobileWithRemote = true;
         }*/
+        if (EditorApplication.isRemoteConnected)
+        {
+            isMobileWithRemote = true;
+        }
 
         return isMobileWithRemote;
     }
