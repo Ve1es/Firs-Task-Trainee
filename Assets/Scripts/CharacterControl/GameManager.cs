@@ -43,14 +43,11 @@ public class GameManager : MonoBehaviour
 #endif
 
         // Дополнительная проверка на Unity Remote
-        if (isMobileWithRemote)
-        {
-            isMobileWithRemote = true;
-        }
+      /*  
         if(!UnityEditor.EditorApplication.isRemoteConnected)
         {
             isMobileWithRemote = false;
-        }
+        }*/
 
         return isMobileWithRemote;
     }
