@@ -27,8 +27,10 @@ public class Player : MonoBehaviour
     public GameObject endGameCanvas;
     public GameObject inGameCanvas;
     public AddScoreToDB addScore;
+    public bool stopAction = false;
 
     private bool _doState=false;
+    
 
     private void Awake()
     {
@@ -45,8 +47,21 @@ public class Player : MonoBehaviour
         collisionHandler.obstacleCollisionEvent += Death;
         jumpEndEvent.EndJumpSignal += JumpEnd;
         slideEndEvent.EndSlideSignal += SlideEnd;
+        _stateDeath.stopMove += StopAction;
+        _stateDeath.keepMove += StopAction;
     }
 
+    public void StopAction()
+    {
+        if(stopAction)
+        {
+            stopAction = false;
+        }
+        else
+        {
+            stopAction = true;
+        }
+    }
     private void JumpEnd()
     {
         _doState = false;
@@ -65,15 +80,21 @@ public class Player : MonoBehaviour
     }
     public void MoveRight()
     {
-        mover.MoveRight();
+        if (stopAction)
+        {
+            mover.MoveRight();
+        }
     }
     public void MoveLeft()
     {
-        mover.MoveLeft();
+        if (stopAction)
+        {
+            mover.MoveLeft();
+        }
     }
     public void Jump()
     {
-        if (!_doState)
+        if (!_doState&& stopAction)
         {
             _sm.ChangeState(_stateJump);
             _doState = true;
@@ -81,7 +102,7 @@ public class Player : MonoBehaviour
     }
     public void Slide()
     {
-        if (!_doState)
+        if (!_doState && stopAction)
         {
             _sm.ChangeState(_stateSlide);
             _doState = true;

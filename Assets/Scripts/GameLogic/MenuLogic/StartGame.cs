@@ -20,7 +20,9 @@ public class StartGame : MonoBehaviour
     }
     private void StartRun()
     {
+        _player.stopAction = true;
         _player.Run();
+
     }
     private void ChangeUI()
     {

@@ -43,7 +43,14 @@ public class Mover : MonoBehaviour
     }
     public void RunStop()
     {
+        if (_isRun)
+        {
             _isRun = false;
+        }
+        else
+        {
+            _isRun = true;
+        }
     }
     public void Run()
     {

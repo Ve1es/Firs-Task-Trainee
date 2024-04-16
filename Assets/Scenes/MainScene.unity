@@ -2925,7 +2925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ee0c694bc0c4f54c8393d18de30ec48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gO: {fileID: 0}
+  gO: {fileID: 1291397909}
 --- !u!1 &1297266658
 GameObject:
   m_ObjectHideFlags: 0
@@ -3246,8 +3246,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: -663.52924}
-  m_SizeDelta: {x: 360.00012, y: 200}
+  m_AnchoredPosition: {x: 0.000061035156, y: 281}
+  m_SizeDelta: {x: -615.261, y: 198.462}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1380394463
 MonoBehaviour:
@@ -4074,7 +4074,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 980, y: 1829.3202}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1837877921
 MonoBehaviour:
@@ -4451,6 +4451,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1719860574}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: StopAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1890436929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4510,10 +4522,10 @@ RectTransform:
   - {fileID: 1380394462}
   m_Father: {fileID: 1657853786}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1977452360
 GameObject:
