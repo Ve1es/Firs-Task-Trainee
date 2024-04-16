@@ -15,6 +15,7 @@ public class StateJump : State
         if (!isJumping)
         {
             isJumping = true;
+            
             _player.anim.SetBool("isJumping", true);
             _player.rb.AddForce(Vector3.up * _player.jumpForce, ForceMode.Impulse);
         }

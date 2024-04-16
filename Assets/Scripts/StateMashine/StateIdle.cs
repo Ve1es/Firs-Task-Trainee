@@ -5,6 +5,7 @@ using UnityEngine;
 public class StateIdle : State
 {
     private Player _player;
+    
     public StateIdle(Player player)
     {
         _player = player;

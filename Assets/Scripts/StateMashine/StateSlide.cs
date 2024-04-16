@@ -11,9 +11,7 @@ public class StateSlide : State
         _player = player;
     }
     public override void Enter()
-    {
-        //base.Enter();
-        //Debug.LogError("Я вошел в состояние подката");
+    {   
         if (!isSliding)
         {
             isSliding = true;
@@ -22,6 +20,7 @@ public class StateSlide : State
             _player.colliderRun.enabled = false;
         }
     }
+    
     public override void Exit()
     {
         //base.Exit();

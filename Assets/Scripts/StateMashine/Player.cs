@@ -28,6 +28,8 @@ public class Player : MonoBehaviour
     public GameObject inGameCanvas;
     public AddScoreToDB addScore;
 
+    private bool _doState=false;
+
     private void Awake()
     {
         _sm = new StateMachine();
@@ -41,10 +43,21 @@ public class Player : MonoBehaviour
     {
         _sm.Initialize(new StateIdle(this));
         collisionHandler.obstacleCollisionEvent += Death;
-        jumpEndEvent.EndJumpSignal += Run;
-        slideEndEvent.EndSlideSignal += Run;
+        jumpEndEvent.EndJumpSignal += JumpEnd;
+        slideEndEvent.EndSlideSignal += SlideEnd;
     }
 
+    private void JumpEnd()
+    {
+        _doState = false;
+        Run();
+        
+    }
+    private void SlideEnd()
+    {
+        _doState = false;
+        Run();
+    }
 
     private void Update()
     {
@@ -60,11 +73,19 @@ public class Player : MonoBehaviour
     }
     public void Jump()
     {
-        _sm.ChangeState(_stateJump);
+        if (!_doState)
+        {
+            _sm.ChangeState(_stateJump);
+            _doState = true;
+        }
     }
     public void Slide()
     {
-        _sm.ChangeState(_stateSlide);
+        if (!_doState)
+        {
+            _sm.ChangeState(_stateSlide);
+            _doState = true;
+        }
     }
     public void Run()
     {
@@ -74,4 +95,6 @@ public class Player : MonoBehaviour
     {
         _sm.ChangeState(_stateDeath);
     }
+
+
 }

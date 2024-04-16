@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MobileControlStrategy : IControlStrategy
 {
-    private const float swipeThreshold = 50f;
+    private const float swipeThreshold = 0.5f;
 
     public event Action UpSignal;
     public event Action DownSignal;
@@ -19,8 +19,8 @@ public class MobileControlStrategy : IControlStrategy
 
             if (touch.phase == TouchPhase.Ended)
             {
+                
                 Vector2 swipeDelta = touch.deltaPosition;
-
                 if (swipeDelta.magnitude > swipeThreshold)
                 {
                     if (Mathf.Abs(swipeDelta.x) > Mathf.Abs(swipeDelta.y))

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -11,9 +12,10 @@ public class GameManager : MonoBehaviour
     {
         startGame.startGameEvent += GetControl;
     }
+
     void GetControl()
     {
-        if (Application.isMobilePlatform)
+        if (IsMobilePlatformWithRemote())
         {
             playerController.SetControlStrategy(new MobileControlStrategy());
         }
@@ -21,5 +23,35 @@ public class GameManager : MonoBehaviour
         {
             playerController.SetControlStrategy(new DesktopControlStrategy());
         }
+    }
+
+    bool IsMobilePlatformWithRemote()
+    {
+        bool isMobileWithRemote = false;
+
+#if UNITY_EDITOR
+        if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.Android ||
+            EditorUserBuildSettings.activeBuildTarget == BuildTarget.iOS)
+        {
+            isMobileWithRemote = true;
+        }
+#else
+    if (Application.isMobilePlatform)
+    {
+        isMobileWithRemote = true;
+    }
+#endif
+
+        // Дополнительная проверка на Unity Remote
+        if (isMobileWithRemote)
+        {
+            isMobileWithRemote = true;
+        }
+        if(!UnityEditor.EditorApplication.isRemoteConnected)
+        {
+            isMobileWithRemote = false;
+        }
+
+        return isMobileWithRemote;
     }
 }

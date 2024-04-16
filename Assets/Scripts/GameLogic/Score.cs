@@ -26,7 +26,6 @@ public class Score : MonoBehaviour
                 score += Mathf.RoundToInt(deltaZ * scoreIncrement);
             }
             _previousZ = transform.position.z;
-            Debug.Log("Score: " + score);
         }
     }
 }
